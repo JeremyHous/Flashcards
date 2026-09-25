@@ -9,6 +9,8 @@
   --danger: #c93c3c;
   --success: #2f9e5b;
   --warning: #9a6700;
+  --pink: #c2255c;
+  --pink-text: #ffffff;
   --shadow: 0 1px 2px rgba(20, 24, 40, 0.06), 0 4px 16px rgba(20, 24, 40, 0.06);
   --radius: 12px;
   color-scheme: light;
@@ -28,6 +30,8 @@
     --danger: #ff6b6b;
     --success: #4fd08a;
     --warning: #f0b84f;
+    --pink: #ff7eb6;
+    --pink-text: #1a0610;
     --shadow: none;
     color-scheme: dark;
   }
@@ -44,6 +48,8 @@
   --danger: #ff6b6b;
   --success: #4fd08a;
   --warning: #f0b84f;
+  --pink: #ff7eb6;
+  --pink-text: #1a0610;
   --shadow: none;
   color-scheme: dark;
 }
@@ -132,6 +138,8 @@ button.primary, .button.primary {
 button.danger { color: var(--danger); }
 button.success { background: var(--success); border-color: var(--success); color: #fff; font-weight: 600; }
 button.learning { background: var(--warning); border-color: var(--warning); color: #1d1606; font-weight: 600; }
+button.review, .button.review { background: var(--pink); border-color: var(--pink); color: var(--pink-text); font-weight: 600; }
+button.review:hover:not(:disabled), .button.review:hover { filter: brightness(1.1); border-color: var(--pink); }
 button.small { padding: 4px 10px; font-size: 0.9rem; }
 
 :focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }

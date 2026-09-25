@@ -182,7 +182,7 @@ function renderHome() {
           ),
           el('a', { class: 'button', href: `#/deck/${deck.id}`, text: 'Open' }),
           el('a', {
-            class: 'button primary',
+            class: 'button review',
             href: `#/review/${deck.id}${learning ? '' : '/all'}`,
             text: 'Review',
             'aria-disabled': deck.cards.length ? null : 'true',
@@ -289,12 +289,12 @@ function renderDeck(deck) {
     ),
     el('div', { class: 'row', style: 'margin: 16px 0' },
       el('button', {
-        type: 'button', class: 'primary', disabled: learning === 0,
+        type: 'button', class: 'review', disabled: learning === 0,
         text: `Review still learning (${learning})`,
         onclick: () => { location.hash = `#/review/${deck.id}`; },
       }),
       el('button', {
-        type: 'button', disabled: deck.cards.length === 0, text: `Review all (${deck.cards.length})`,
+        type: 'button', class: 'review', disabled: deck.cards.length === 0, text: `Review all (${deck.cards.length})`,
         onclick: () => { location.hash = `#/review/${deck.id}/all`; },
       }),
     ),
@@ -321,7 +321,7 @@ function renderReview(deck, all) {
         el('h2', { text: deck.cards.length ? 'You know every card!' : 'This deck is empty' }),
         el('p', { class: 'muted', text: deck.cards.length ? 'Review them all again to keep them fresh.' : 'Add some cards to start reviewing.' }),
         el('div', { class: 'row', style: 'justify-content:center' },
-          deck.cards.length > 0 && el('a', { class: 'button primary', href: `#/review/${deck.id}/all`, text: 'Review all' }),
+          deck.cards.length > 0 && el('a', { class: 'button review', href: `#/review/${deck.id}/all`, text: 'Review all' }),
           el('a', { class: 'button', href: `#/deck/${deck.id}`, text: 'Back to deck' }),
         ),
       ),
@@ -355,7 +355,7 @@ function renderReview(deck, all) {
           el('div', { class: 'row', style: 'justify-content:center' },
             countStatus(deck).learning > 0 &&
               el('a', {
-                class: 'button primary', href: `#/review/${deck.id}`, text: 'Review still learning',
+                class: 'button review', href: `#/review/${deck.id}`, text: 'Review still learning',
                 // The hash may already point here, in which case hashchange won't fire.
                 onclick: (e) => {
                   e.preventDefault();
