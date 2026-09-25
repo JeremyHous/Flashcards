@@ -12,8 +12,8 @@ Flashcards study tool: users create question/answer cards in decks, flip them in
 ## Files
 
 - `index.html`: page shell, the edit-card `<dialog>`, and the toast element. Views are rendered into `<main id="app">`.
-- `styles.css`: all styling. Colors are CSS variables on `:root`, redefined in `@media (prefers-color-scheme: dark)`. Use the tokens, never hard-coded colors.
-- `app.js`: all logic, organised in sections: Storage → Helpers → Views → Card edit dialog → Import/export → Routing.
+- `styles.css`: all styling. Colors are CSS variables on `:root`. Black mode redefines them twice, once for the system dark setting (`:root:not([data-theme="light"])` inside the media query) and once for `:root[data-theme="dark"]`; keep both blocks identical. Use the tokens, never hard-coded colors.
+- `app.js`: all logic, organised in sections: Storage → Helpers → Views → Card edit dialog → Import/export → Theme → Routing.
 
 ## Architecture
 
@@ -23,6 +23,7 @@ Flashcards study tool: users create question/answer cards in decks, flip them in
   - `#/deck/<id>`: a deck's cards, the add form, and the edit/delete buttons
   - `#/review/<id>`: review cards that are Still learning
   - `#/review/<id>/all`: review every card
+- **Theme:** the header toggle sets `data-theme` on `<html>` and stores it under `flashcards.theme`. An inline script in `index.html` applies the saved theme before first paint.
 - **Keyboard:** only the review view sets `keyHandler` (`Space`/`Enter` flip, `1` = Still learning, `2` = Known). `render()` resets it. The global listener ignores keys while typing in fields or while the dialog is open.
 
 ## Data model

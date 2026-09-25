@@ -7,10 +7,18 @@
   <title>Flashcards</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗂️</text></svg>">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    // Apply the saved theme before first paint to avoid a flash of the wrong colors.
+    try {
+      var theme = localStorage.getItem('flashcards.theme');
+      if (theme === 'dark' || theme === 'light') document.documentElement.dataset.theme = theme;
+    } catch (e) {}
+  </script>
 </head>
 <body>
   <header class="site-header">
     <a href="#/" class="brand">🗂️ Flashcards</a>
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">🌙 Black mode</button>
   </header>
 
   <main id="app" class="container" tabindex="-1"></main>

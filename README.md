@@ -11,7 +11,8 @@ A small flashcard web app built with plain HTML, CSS and JavaScript. No framewor
 - Mark each card as **Known** (`2`) or **Still learning** (`1`); the status is shown in the card list
 - "Review still learning" only shows cards you haven't mastered; "Review all" shows every card
 - Export / import all decks as a JSON file
-- Light and dark mode, works on mobile
+- Black mode: a true-black theme that follows your system setting by default; the header button switches it on or off and the choice is remembered
+- Works on mobile
 
 ## Data
 
