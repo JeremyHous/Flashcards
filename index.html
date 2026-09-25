@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Simple flashcards that live in your browser.">
+  <title>Flashcards</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗂️</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="#/" class="brand">🗂️ Flashcards</a>
+  </header>
+
+  <main id="app" class="container" tabindex="-1"></main>
+
+  <footer class="site-footer container">
+    Your cards are stored only in this browser. Use <strong>Export</strong> to back them up.
+  </footer>
+
+  <dialog id="card-dialog">
+    <form method="dialog" id="card-form">
+      <h2>Edit card</h2>
+      <label>Question
+        <textarea name="question" rows="3" required></textarea>
+      </label>
+      <label>Answer
+        <textarea name="answer" rows="3" required></textarea>
+      </label>
+      <div class="actions">
+        <button type="submit" value="cancel" formnovalidate>Cancel</button>
+        <button type="submit" value="save" class="primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
