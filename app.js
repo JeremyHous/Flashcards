@@ -476,6 +476,37 @@ function importFile(file) {
   reader.readAsText(file);
 }
 
+/* ---------- Theme (black mode) ---------- */
+
+const THEME_KEY = 'flashcards.theme';
+const themeToggle = document.getElementById('theme-toggle');
+const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+function isBlackMode() {
+  const chosen = document.documentElement.dataset.theme;
+  return chosen ? chosen === 'dark' : systemDark.matches;
+}
+
+function updateThemeToggle() {
+  const black = isBlackMode();
+  themeToggle.textContent = black ? '☀️ Light mode' : '🌙 Black mode';
+  themeToggle.setAttribute('aria-pressed', String(black));
+}
+
+themeToggle.addEventListener('click', () => {
+  const theme = isBlackMode() ? 'light' : 'dark';
+  document.documentElement.dataset.theme = theme;
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch (err) {
+    console.warn('Could not save theme:', err);
+  }
+  updateThemeToggle();
+});
+
+systemDark.addEventListener('change', updateThemeToggle);
+updateThemeToggle();
+
 /* ---------- Routing ---------- */
 
 function route() {
