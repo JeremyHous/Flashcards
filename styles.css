@@ -84,6 +84,15 @@ h2 { font-size: 1.15rem; margin: 24px 0 12px; }
   gap: 12px;
 }
 .theme-toggle { padding: 6px 12px; font-size: 0.9rem; }
+.header-right { display: flex; align-items: center; gap: 12px; }
+/* Profile photo clipped to a diamond. */
+.avatar {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  flex-shrink: 0;
+}
 .brand { font-weight: 700; font-size: 1.1rem; color: var(--text); text-decoration: none; }
 
 .site-footer {
